@@ -1,17 +1,17 @@
 <template>
-  <div class="container" id="app">
+  <div class="container-fluid" id="app">
     <div class="row">
-      <div class="card h-100 px-0 border-primary col-sm-3">
+      <div class="card h-100 px-2 col-sm-3" style="margin-left: 20px;">
         <div class="card-body">
           <h5 class="card-title">Pattern</h5>
-          <div v-for="(value, name) in finalList" :key="name">
-            {{ name }} : {{ value }}
-          </div>
+            <div v-for="(value, name) in finalList" :key="name">
+              <li>{{ name }} :<br> {{ value }}</li>
+            </div>
           <br>
           <button type="button" class="btn btn-success" @click="insertToDB">Submit</button>
         </div>
       </div>
-      <div class="container col-sm-9">
+      <div class="container col-sm-8">
         <h2 style="text-align: center;">Group Patterns System</h2>
         <br>
         <br>
@@ -21,7 +21,7 @@
           <button type="button" class="btn btn-primary" @click="retrieveFromURL">Search</button>
         </div>
         <InventorySection v-if="urlPattern.length" :UrlPattern="urlPattern" :UrlNextPagePattern="nextPagePattern"
-                          @wanted_url_pattern="test"/>
+                          @wanted_url_pattern="addToPatternList"/>
         <hr>
         <InventoryDetailSection v-if="detailJson !== ''" :DetailJson="detailJson" @wanted_url_pattern="addToPatternList"/>
         <hr>
@@ -72,15 +72,15 @@ export default {
     initialFinalList () {
       return {
         businessID: this.userInputURL,
-        inventoryUrl: [],
-        urlPattern: [],
-        nextPagePattern: [],
-        vinPattern: [],
-        colorPattern: [],
-        mileagePattern: [],
-        pricePattern: [],
-        imageUrlPattern: [],
-        excludeUrlPattern: []
+        inventoryUrl: '',
+        urlPattern: '',
+        nextPagePattern: '',
+        vinPattern: '',
+        colorPattern: '',
+        mileagePattern: '',
+        pricePattern: '',
+        imageUrlPattern: '',
+        excludeUrlPattern: ''
       }
     },
     async retrieveFromURL () {
@@ -91,7 +91,7 @@ export default {
       try {
         const result = await axios({
           method: 'POST',
-          url: 'http://54.191.215.56:8191/graphql',
+          url: 'http://54.218.184.105:8191/graphql',
           data: {
             query: `
               query GetGroupMatchPatterns {
@@ -175,18 +175,11 @@ export default {
         console.error(error)
       }
     },
-    addToPatternList (checkbox) {
-      const wantedPattern = checkbox.value
-      console.log(checkbox)
-      const patternType = checkbox.name
-      if (checkbox.checked) {
-        if (!this.finalList[patternType].includes(wantedPattern)) {
-          this.finalList[patternType].push(wantedPattern)
-        }
-      } else {
-        this.finalList[patternType] = this.finalList[patternType].filter(pattern => {
-          return pattern !== wantedPattern
-        })
+    addToPatternList (radio) {
+      const wantedPattern = radio.value
+      const patternType = radio.name
+      if (radio.checked) {
+        this.finalList[patternType] = wantedPattern
       }
     },
     test (a, b) {
@@ -263,6 +256,10 @@ export default {
 .btn-success, .btn-success:hover, .btn-success:active, .btn-success:visited {
   background-color: #24A49C;
   border-radius: 10px;
+}
+
+ul.pattern {
+  list-style-type: square;
 }
 
 </style>
