@@ -19,7 +19,7 @@
       <div>
         <li>
         <div class="container">
-          <input type="radio" id="vinEmpty" name="vinPattern" value="" @change="$emit('wanted_url_pattern', $event.target)">
+          <input type="radio" id="vinEmpty" name="vinPattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.target)">
           <label class="radioLabel" for="vinEmpty">
             null
           </label>
@@ -45,7 +45,7 @@
       <div>
         <li>
           <div class="container">
-            <input type="radio" id="colorEmpty" name="colorPattern" value="" @change="$emit('wanted_url_pattern', $event.target)">
+            <input type="radio" id="colorEmpty" name="colorPattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.target)">
             <label class="radioLabel" for="colorEmpty">
               null
             </label>
@@ -71,7 +71,7 @@
       <div>
         <li>
           <div class="container">
-            <input type="radio" id="mileageEmpty" name="mileagePattern" value="" @change="$emit('wanted_url_pattern', $event.target)">
+            <input type="radio" id="mileageEmpty" name="mileagePattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.target)">
             <label class="radioLabel" for="mileageEmpty">
               null
             </label>
@@ -97,7 +97,7 @@
       <div>
         <li>
           <div class="container">
-            <input type="radio" id="priceEmpty" name="pricePattern" value="" @change="$emit('wanted_url_pattern', $event.target)">
+            <input type="radio" id="priceEmpty" name="pricePattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.target)">
             <label class="radioLabel" for="priceEmpty">
               null
             </label>

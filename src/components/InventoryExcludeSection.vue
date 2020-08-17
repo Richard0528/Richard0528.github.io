@@ -18,7 +18,7 @@
       <div>
       <li>
         <div class="container">
-            <input type="radio" id="excludeEmpty" name="excludeUrlPattern" value="" @change="$emit('wanted_url_pattern', $event.target)">
+            <input type="radio" id="excludeEmpty" name="excludeUrlPattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.target)">
             <label class="radioLabel" for="excludeEmpty">
               null
             </label>

@@ -31,7 +31,7 @@
       <div>
         <li>
         <div class="container">
-          <input type="radio" id="urlEmpty" name="urlPattern" value="" @change="$emit('wanted_url_pattern', $event.targe)">
+          <input type="radio" id="urlEmpty" name="urlPattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.targe)">
           <label class="radioLabel" for="urlEmpty">
             null
           </label>
@@ -56,7 +56,7 @@
       <div>
       <li>
         <div class="container">
-          <input type="radio" id="nextPageEmpty" name="nextPagePattern" value="" @change="$emit('wanted_url_pattern', $event.target)">
+          <input type="radio" id="nextPageEmpty" name="nextPagePattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.target)">
           <label class="radioLabel" for="nextPageEmpty">
             null
           </label>

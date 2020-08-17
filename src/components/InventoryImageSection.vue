@@ -32,7 +32,7 @@
       <div>
         <li>
           <div class="container">
-            <input type="radio" id="imageEmpty" name="imageUrlPattern" value="" @change="$emit('wanted_url_pattern', $event.target)">
+            <input type="radio" id="imageEmpty" name="imageUrlPattern" value="" checked="checked" @change="$emit('wanted_url_pattern', $event.target)">
             <label class="radioLabel" for="imageEmpty">
               null
             </label>
